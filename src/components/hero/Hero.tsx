@@ -54,9 +54,9 @@ export function Hero() {
           </p>
           <div className="hero-ctas">
             <button className="btn-primary" onClick={enterAcademy}>
-              Enter The Academy
+              Enter Loop Forest
             </button>
-            <button className="btn-ghost">Read the Codex</button>
+            <button className="btn-ghost" onClick={enterAcademy}>Play Demo</button>
           </div>
           <div className="hero-stats">
             <div className="hero-stat">

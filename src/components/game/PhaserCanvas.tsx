@@ -11,7 +11,9 @@ export function PhaserCanvas() {
 
     async function boot() {
       const Phaser = await import("phaser");
-      const { LoopForestScene } = await import("@/phaser/LoopForestScene");
+      const { BootScene } = await import("@/game/scenes/BootScene");
+      const { LoopForestScene } = await import("@/game/scenes/LoopForestScene");
+      const { UIScene } = await import("@/game/scenes/UIScene");
 
       if (!hostRef.current || cancelled) return;
 
@@ -29,7 +31,7 @@ export function PhaserCanvas() {
           width: 960,
           height: 600,
         },
-        scene: [LoopForestScene],
+        scene: [BootScene, LoopForestScene, UIScene],
       });
     }
 

@@ -1,3 +1,5 @@
+import type { LessonId } from "./lessons/loopForestFundamentals";
+
 export const TILE = 16;
 export const W_TILES = 36;
 export const H_TILES = 22;
@@ -61,7 +63,18 @@ export type EntityKind =
   | "mushroom"
   | "byte"
   | "berrybot"
-  | "berrybush";
+  | "berrybush"
+  | "fence"
+  | "crate"
+  | "tools"
+  | "mailbox"
+  | "books"
+  | "robotparts"
+  | "workbench"
+  | "chargingstation"
+  | "bridge"
+  | "plank"
+  | "rowmarker";
 
 export type WorldEntity = {
   id: string;
@@ -73,7 +86,8 @@ export type WorldEntity = {
   sh?: number;
   footW?: number;
   footH?: number;
-  interactable?: "sign" | "byte" | "berrybot";
+  interactable?: "sign" | "byte" | "berrybot" | "lesson";
+  lessonId?: LessonId;
   glow?: boolean;
   light?: boolean;
   hasBerries?: boolean;
@@ -103,11 +117,37 @@ export const ENTITIES: WorldEntity[] = [
   { id: "l3", kind: "lantern", x: 415, y: 200, light: true },
   { id: "l4", kind: "lantern", x: 320, y: 110, light: true },
   { id: "sign", kind: "sign", x: 280, y: 270, interactable: "sign", solid: false },
+  { id: "sequence-trail", kind: "sign", x: 165, y: 170, interactable: "lesson", lessonId: "sequence-01" },
+  { id: "conditional-crossing", kind: "sign", x: 305, y: 112, interactable: "lesson", lessonId: "conditions-01" },
+  { id: "nested-fields", kind: "sign", x: 420, y: 265, interactable: "lesson", lessonId: "nested-loops-01" },
   { id: "m1", kind: "mushroom", x: 175, y: 260 },
   { id: "m2", kind: "mushroom", x: 440, y: 250 },
   { id: "m3", kind: "mushroom", x: 460, y: 145 },
+  { id: "mail-sequence", kind: "mailbox", x: 135, y: 150 },
+  { id: "seed-crate-1", kind: "crate", x: 145, y: 188 },
+  { id: "seed-crate-2", kind: "crate", x: 115, y: 168 },
+  { id: "lantern-path-fence-1", kind: "fence", x: 125, y: 207 },
+  { id: "lantern-path-fence-2", kind: "fence", x: 195, y: 153 },
+  { id: "byte-books-1", kind: "books", x: 225, y: 232 },
+  { id: "byte-workbench", kind: "workbench", x: 260, y: 190, solid: true, footW: 28, footH: 8 },
+  { id: "byte-charger", kind: "chargingstation", x: 285, y: 215 },
+  { id: "hollow-cart", kind: "crate", x: 398, y: 112 },
+  { id: "hollow-tools", kind: "tools", x: 500, y: 163 },
+  { id: "hollow-fence-1", kind: "fence", x: 368, y: 105 },
+  { id: "hollow-fence-2", kind: "fence", x: 478, y: 207 },
+  { id: "fork-bridge", kind: "bridge", x: 320, y: 126 },
+  { id: "fork-plank-left", kind: "plank", x: 286, y: 135 },
+  { id: "fork-plank-right", kind: "plank", x: 356, y: 135 },
+  { id: "fork-robot-parts", kind: "robotparts", x: 350, y: 93 },
+  { id: "row-marker-1", kind: "rowmarker", x: 410, y: 235 },
+  { id: "row-marker-2", kind: "rowmarker", x: 445, y: 235 },
+  { id: "row-marker-3", kind: "rowmarker", x: 480, y: 235 },
+  { id: "row-tools", kind: "tools", x: 495, y: 275 },
   { id: "byte", kind: "byte", x: 245, y: 215, interactable: "byte", glow: true },
-  { id: "berrybot", kind: "berrybot", x: 420, y: 155, interactable: "berrybot", glow: false },
+  { id: "seedbot", kind: "berrybot", x: 185, y: 145, glow: false },
+  { id: "berrybot", kind: "berrybot", x: 420, y: 155, interactable: "lesson", lessonId: "loops-01", glow: false },
+  { id: "basketbot", kind: "berrybot", x: 325, y: 96, glow: false },
+  { id: "rowbot", kind: "berrybot", x: 455, y: 250, glow: false },
   { id: "b1", kind: "berrybush", x: 380, y: 130, hasBerries: true },
   { id: "b2", kind: "berrybush", x: 455, y: 125, hasBerries: true },
   { id: "b3", kind: "berrybush", x: 385, y: 185, hasBerries: true },
@@ -115,4 +155,4 @@ export const ENTITIES: WorldEntity[] = [
   { id: "b5", kind: "berrybush", x: 445, y: 95, hasBerries: true },
 ];
 
-export const PLAYER_SPAWN = { x: 305, y: 245 } as const;
+export const PLAYER_SPAWN = { x: 258, y: 236 } as const;

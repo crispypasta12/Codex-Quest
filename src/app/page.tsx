@@ -1,4 +1,5 @@
 import { GameSection } from "@/components/game/GameSection";
+import { ErrorBoundary } from "@/components/game/ErrorBoundary";
 import { Hero } from "@/components/hero/Hero";
 
 export default function Home() {
@@ -14,7 +15,9 @@ export default function Home() {
           <span>Scroll to enter ↓</span>
         </div>
       </section>
-      <GameSection />
+      <ErrorBoundary>
+        <GameSection />
+      </ErrorBoundary>
     </main>
   );
 }

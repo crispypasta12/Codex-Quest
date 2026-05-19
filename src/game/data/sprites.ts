@@ -470,6 +470,115 @@ RRRRRRR
   { R: P.r3, r: P.r4, c: P.s5, w: P.s4 }
 );
 
+const FENCE = s(
+`w..w..w..w
+w..w..w..w
+WWWWWWWWWW
+w..w..w..w
+w..w..w..w`,
+  { W: P.w3, w: P.w1 }
+);
+
+const CRATE = s(
+`WWWWWWWW
+WwssssWW
+WswwwwsW
+WsswwssW
+WwsssswW
+WWWWWWWW`,
+  { W: P.w1, w: P.w2, s: P.w4 }
+);
+
+const TOOLS = s(
+`..s......
+..s..www.
+..s.wWw..
+..s..w...
+..s......
+..s......
+.www.....`,
+  { s: P.s4, w: P.w2, W: P.w4 }
+);
+
+const MAILBOX = s(
+`..BBBBB..
+.BbbbbbB.
+.BbbbbbB.
+.BBBBBBB.
+....W....
+....W....
+...WWW...`,
+  { B: P.b2, b: P.b4, W: P.w1 }
+);
+
+const BOOKS = s(
+`RR..TT..BB
+Rr..Tt..Bb
+RR..TT..BB
+..YYYY....
+..YyyY....`,
+  { R: P.r2, r: P.r4, T: P.t2, t: P.t4, B: P.b2, b: P.b4, Y: P.a2, y: P.a4 }
+);
+
+const ROBOT_PARTS = s(
+`..CC..tt..
+.CccC.tt..
+..CC......
+.....BB...
+....BbbB..
+.....BB...
+..s....s..`,
+  { C: P.s4, c: P.s5, t: P.t4, B: P.b2, b: P.b4, s: P.s3 }
+);
+
+const WORKBENCH = s(
+`WWWWWWWWWWWW
+WwwwwwwwwwwW
+..W......W..
+..W.tBBt.W..
+..W......W..
+..W......W..`,
+  { W: P.w1, w: P.w4, t: P.t4, B: P.b3 }
+);
+
+const CHARGING_STATION = s(
+`..TTTT..
+.TbbbbT.
+.Tb44bT.
+.TbbbbT.
+..TTTT..
+...WW...
+...WW...
+.WWWWWW.`,
+  { T: P.t3, b: P.b2, '4': P.a4, W: P.w1 }
+);
+
+const BRIDGE = s(
+`WWWWWWWWWWWWWW
+WwwWwwWwwWwwWW
+ssssssssssssss
+WwwWwwWwwWwwWW
+WWWWWWWWWWWWWW`,
+  { W: P.w1, w: P.w3, s: P.s3 }
+);
+
+const PLANK = s(
+`WWWWWWWWWW
+WwwwwwwwWW
+WWWWWWWWWW`,
+  { W: P.w1, w: P.w3 }
+);
+
+const ROW_MARKER = s(
+`...a...
+..aAa..
+...a...
+...W...
+...W...
+..WWW..`,
+  { a: P.a2, A: P.a4, W: P.w1 }
+);
+
 // COBBLESTONE TILE (16x16 used for path)
 const COBBLE = s(
 `SSsSsSsSSsSsSsSs
@@ -541,6 +650,8 @@ export const sprites = {
     HOUSE,
     BERRY_BUSH, BERRY_BUSH_EMPTY,
     MUSHROOM,
+    FENCE, CRATE, TOOLS, MAILBOX, BOOKS, ROBOT_PARTS, WORKBENCH,
+    CHARGING_STATION, BRIDGE, PLANK, ROW_MARKER,
     COBBLE,
     BERRY,
 };

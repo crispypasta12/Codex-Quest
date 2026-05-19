@@ -1,5 +1,68 @@
 # Handoff: The Code Academy — Loop Forest (Vertical Slice)
 
+## Current Vertical Slice
+
+Loopvale Academy now includes a playable Loop Forest lesson:
+
+- Land on the page and choose **Enter Loop Forest**.
+- Move with **WASD** or **arrow keys**.
+- Interact with **E** or **Space**.
+- Press **Esc** or the pause button for the pause menu.
+- Talk to Byte, find the Berry Bot, run `repeat 5 times: collectBerry()`, collect five berries, earn +50 XP, unlock the **Loop Apprentice Badge**, then return to Byte to complete the quest.
+
+## Run And Build
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+The dev server uses Next.js. If port `3000` is occupied, Next will choose the next available port.
+
+## Implemented Lesson
+
+- Chapter: **Loop Forest**
+- Quest: **Teach the Berry Bot to Loop**
+- Concept: loops repeat a command a fixed number of times
+- Puzzle: choose **Repeat 5 Times**, run the robot, and watch it collect five berries
+- Reward: **+50 XP**, **Loop Apprentice Badge**, **Berry Bot Sticker**
+
+## Playtest Checklist
+
+- Start from the onboarding controls screen.
+- Talk to Byte.
+- Follow the objective tracker to the Berry Bot.
+- Confirm the puzzle has Run, Reset, and hint behavior.
+- Watch the robot collect all five berries.
+- Close the reward popup.
+- Return to Byte and verify the quest reaches 5/5.
+- Refresh the page and confirm XP, badge, quest state, and player position persist.
+- Use **Reset Lesson** from the HUD or pause menu for a clean replay.
+
+## Visual Polish Checklist
+
+- Map texture generation lives in `src/game/scenes/LoopForestScene.ts`; keep tile variation, terrain edge overlays, and ground details deterministic so save/load and collision stay untouched.
+- World layout and decorative storytelling props live in `src/game/data/worldMap.ts`; lesson IDs, unlock requirements, and interactable IDs should remain stable.
+- Visible place labels use each lesson `worldName`; lesson board titles and puzzle copy keep the CS learning language.
+- Generated pixel sprites live in `src/game/data/sprites.ts`; placeholder props are safe to replace with final authored assets later.
+- HUD polish lives mostly in `src/app/globals.css` and React HUD components; preserve the Zustand persistence key `loopvale-progress-v1`.
+- Final QA should cover all four lessons, reward/XP updates, refresh persistence, reset progress, keyboard controls, and puzzle interactions.
+
+## Known Limitations
+
+- Pixel art is generated from placeholder sprite grids and can be swapped for final art later.
+- Audio hooks exist in the project but this slice keeps sound minimal.
+- Save data is localStorage-only; no backend sync is included.
+- Only the loops lesson is implemented.
+
+## Roadmap
+
+- Add final authored pixel assets and audio.
+- Add more lessons after loops: functions, conditionals, data structures.
+- Add richer accessibility settings and controller support.
+- Add optional account sync when the backend direction is decided.
+
 ## Overview
 
 A cozy pixel-art browser game that teaches computer science through exploration. This handoff covers the **first vertical slice**: a landing hero with an interactive bookshelf, plus a playable Loop Forest scene where the player meets Byte (the robot teacher), helps a broken berry-collecting robot, and learns about loops by running a `repeat 5 times` block.
